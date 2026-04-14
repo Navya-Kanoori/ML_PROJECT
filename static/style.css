@@ -1,0 +1,128 @@
+/* General page styling */
+
+body{
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background: linear-gradient(135deg,#1d2671,#c33764);
+min-height:100vh;
+margin:0;
+color:#333;
+}
+
+/* Title */
+
+h1,h2{
+text-align:center;
+color:white;
+margin-top:20px;
+font-weight:bold;
+}
+
+/* Container */
+
+.container{
+background:white;
+border-radius:15px;
+padding:30px;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+margin-top:40px;
+}
+
+/* Cards */
+
+.card{
+border:none;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+transition:transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 15px 35px rgba(0,0,0,0.3);
+}
+
+/* Summary numbers */
+
+.card h3{
+font-size:32px;
+font-weight:bold;
+}
+
+/* Buttons */
+
+.btn-primary{
+background:linear-gradient(45deg,#36d1dc,#5b86e5);
+border:none;
+padding:10px 25px;
+font-weight:bold;
+border-radius:30px;
+transition:0.3s;
+}
+
+.btn-primary:hover{
+transform:scale(1.05);
+background:linear-gradient(45deg,#5b86e5,#36d1dc);
+}
+
+.btn-danger{
+background:linear-gradient(45deg,#ff416c,#ff4b2b);
+border:none;
+padding:10px 25px;
+border-radius:30px;
+font-weight:bold;
+}
+
+/* Upload form */
+
+form{
+text-align:center;
+margin-top:20px;
+}
+
+/* Tables */
+
+table{
+width:100%;
+margin-top:20px;
+border-radius:10px;
+overflow:hidden;
+}
+
+th{
+background:#5b86e5;
+color:white;
+text-align:center;
+}
+
+td{
+text-align:center;
+}
+
+/* Highlight anomaly rows */
+
+tr:nth-child(even){
+background:#f8f9fa;
+}
+
+tr:hover{
+background:#ffe5e5;
+}
+
+/* Model info box */
+
+.model-box{
+background:#f1f5ff;
+padding:15px;
+border-left:5px solid #5b86e5;
+border-radius:8px;
+margin-top:20px;
+}
+
+/* Charts spacing */
+
+canvas{
+background:white;
+border-radius:10px;
+padding:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}

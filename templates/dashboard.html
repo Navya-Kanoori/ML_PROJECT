@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Dashboard</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-4">
+
+<h2 class="text-center mb-4">Anomaly Detection Dashboard</h2>
+
+<div class="row">
+
+<div class="col-md-4">
+<div class="card text-center p-3">
+<h5>Total Transactions</h5>
+<h3>{{total}}</h3>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card text-center p-3">
+<h5>Normal Transactions</h5>
+<h3>{{normal}}</h3>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card text-center p-3">
+<h5>Anomalies</h5>
+<h3>{{anomalies}}</h3>
+</div>
+</div>
+
+</div>
+
+<br>
+
+<div class="row">
+
+<div class="col-md-6">
+<canvas id="barChart"></canvas>
+</div>
+
+<div class="col-md-6">
+<canvas id="pieChart"></canvas>
+</div>
+
+</div>
+
+<br>
+
+<h4>Detected Anomalies</h4>
+
+{{table | safe}}
+
+<br>
+
+<a href="/download" class="btn btn-danger">Download Anomaly Report</a>
+
+<br><br>
+
+<div class="card p-3">
+
+<h5>Model Information</h5>
+
+<p><b>Algorithm:</b> Isolation Forest</p>
+
+<p><b>Purpose:</b> Detect unusual transaction patterns</p>
+
+<p><b>Features Used:</b> Numeric transaction attributes</p>
+
+</div>
+
+</div>
+
+<script>
+
+var bar = document.getElementById('barChart');
+
+new Chart(bar, {
+
+type: 'bar',
+
+data: {
+
+labels: ['Normal Transactions','Anomalies'],
+
+datasets: [{
+
+label: 'Transaction Count',
+
+data: [{{normal}}, {{anomalies}}],
+
+backgroundColor: [
+
+'#4CAF50',   // green for normal
+'#FF5252'    // red for anomalies
+
+],
+
+borderColor: [
+
+'#2E7D32',
+'#C62828'
+
+],
+
+borderWidth: 2
+
+}]
+
+},
+
+options: {
+
+plugins: {
+
+legend: {
+
+labels: {
+
+font: {
+
+size: 14
+
+}
+
+}
+
+}
+
+},
+
+scales: {
+
+y: {
+
+beginAtZero: true
+
+}
+
+}
+
+}
+
+});
+var pie = document.getElementById('pieChart');
+
+new Chart(pie, {
+
+type: 'pie',
+
+data: {
+
+labels: ['Normal Transactions','Anomalies'],
+
+datasets: [{
+
+data: [{{normal}}, {{anomalies}}],
+
+backgroundColor: [
+
+'#15c05c',   // bright green
+'#e34767'    // bright red
+
+],
+
+hoverOffset: 10
+
+}]
+
+},
+
+options: {
+
+plugins: {
+
+legend: {
+
+position: 'bottom',
+
+labels: {
+
+font: {
+
+size: 14
+
+}
+
+}
+
+}
+
+}
+
+}
+
+});
+</script>
+
+</body>
+
+</html>
